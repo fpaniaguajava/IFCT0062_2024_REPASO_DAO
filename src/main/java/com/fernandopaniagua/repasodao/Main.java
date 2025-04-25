@@ -1,8 +1,11 @@
 package com.fernandopaniagua.repasodao;
 
+import com.fernandopaniagua.repasodao.exceptions.PersistenceException;
 import com.fernandopaniagua.repasodao.model.Movie;
 import com.fernandopaniagua.repasodao.persistence.IMovieDAO;
 import com.fernandopaniagua.repasodao.persistence.MovieDAOFactory;
+
+import java.sql.SQLException;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -12,9 +15,14 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         IMovieDAO movieDAO = MovieDAOFactory.getMovieDAO();
         Movie elconclave = new Movie(1, "El cónclave", "Desconocido");
-        movieDAO.create(elconclave);
+        try {
+            movieDAO.create(elconclave);
+            System.out.println(("Registro creado"));
+        } catch (PersistenceException sqle) {
+            System.err.println(sqle.getMessage());
+        }
 
-        Movie peliculaLeida = movieDAO.read(1);
-        System.out.println(peliculaLeida);
+        //Movie peliculaLeida = movieDAO.read(1);
+        //System.out.println(peliculaLeida);
     }
 }

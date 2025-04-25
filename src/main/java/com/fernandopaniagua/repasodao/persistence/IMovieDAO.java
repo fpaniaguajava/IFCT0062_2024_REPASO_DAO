@@ -1,10 +1,13 @@
 package com.fernandopaniagua.repasodao.persistence;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import com.fernandopaniagua.repasodao.exceptions.PersistenceException;
 import com.fernandopaniagua.repasodao.model.Movie;
 
 public interface IMovieDAO {
-    public void create(Movie movie);
+    public void create(Movie movie) throws PersistenceException;
     public Movie read(int id);
     public List<Movie> readAll();
     public void update(Movie movie);
