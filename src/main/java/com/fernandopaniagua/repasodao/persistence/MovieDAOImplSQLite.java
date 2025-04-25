@@ -3,10 +3,8 @@ package com.fernandopaniagua.repasodao.persistence;
 import com.fernandopaniagua.repasodao.exceptions.PersistenceException;
 import com.fernandopaniagua.repasodao.model.Movie;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDAOImplSQLite implements IMovieDAO{
@@ -28,13 +26,43 @@ public class MovieDAOImplSQLite implements IMovieDAO{
     }
 
     @Override
-    public Movie read(int id) {
-        return null;
+    public Movie read(int id) throws PersistenceException {
+        Movie movie = null;
+        try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword)) {
+            String sql = "SELECT * FROM movie WHERE id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                movie = new Movie(
+                                rs.getInt("id"),
+                                rs.getString("title"),
+                                rs.getString("director"));
+            }
+        } catch (SQLException sqle) {
+            throw new PersistenceException(sqle.getMessage());
+        }
+        return movie;
     }
 
     @Override
-    public List<Movie> readAll() {
-        return List.of();
+    public List<Movie> readAll() throws PersistenceException {
+        List<Movie> movies = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(dbURL, dbUser, dbPassword)) {
+            String sql = "SELECT * FROM movie";
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(sql);
+            while (rs.next()) {
+                Movie movie = new Movie(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("director"));
+                movies.add(movie);
+            }
+        } catch (SQLException sqle) {
+            throw new PersistenceException(sqle.getMessage());
+        }
+        return movies;
     }
 
     @Override

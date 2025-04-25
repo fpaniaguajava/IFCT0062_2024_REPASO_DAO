@@ -8,8 +8,8 @@ import com.fernandopaniagua.repasodao.model.Movie;
 
 public interface IMovieDAO {
     public void create(Movie movie) throws PersistenceException;
-    public Movie read(int id);
-    public List<Movie> readAll();
+    public Movie read(int id) throws PersistenceException;
+    public List<Movie> readAll() throws PersistenceException;;
     public void update(Movie movie);
     public void delete(int id);
 }
