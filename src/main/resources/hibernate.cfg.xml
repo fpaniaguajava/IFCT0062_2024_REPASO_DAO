@@ -9,7 +9,7 @@
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.pool.size">10</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">false</property><!-- Cambia el modelo de datos -->
+        <property name="hibernate.hbm2ddl.auto">none</property><!-- Cambia el modelo de datos -->
         <mapping class="com.fernandopaniagua.repasodao.model.Movie"/>
     </session-factory>
 </hibernate-configuration>

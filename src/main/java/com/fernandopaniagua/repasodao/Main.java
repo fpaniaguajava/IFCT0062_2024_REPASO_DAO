@@ -17,7 +17,7 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         IMovieDAO movieDAO = MovieDAOFactory.getMovieDAO();
 
-        Movie elconclave = new Movie(1, "Anora", "Desconocido");
+        Movie elconclave = new Movie("El resplandor", "Desconocido");
         try {
             movieDAO.create(elconclave);
             System.out.println(("Registro creado"));
