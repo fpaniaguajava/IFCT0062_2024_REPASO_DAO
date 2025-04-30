@@ -7,10 +7,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAOImplSQLite extends MovieDAOImplSQL {
-    public MovieDAOImplSQLite() {
-        dbURL = "jdbc:sqlite:/Users/tardes/IdeaProjects/IFCT0062_2024_REPASO_DAO/movies.db";
-        dbUser = "";
-        dbPassword = "";
+public class MovieDAOImplPostgre extends MovieDAOImplSQL {
+    public MovieDAOImplPostgre() {
+        dbURL = "jdbc:postgresql://localhost:5432/movies";
+        dbUser = "user_app";
+        dbPassword = "user_password";
     }
 }
