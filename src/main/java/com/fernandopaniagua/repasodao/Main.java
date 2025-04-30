@@ -15,15 +15,15 @@ public class Main {
 
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-//        IMovieDAO movieDAO = MovieDAOFactory.getMovieDAO();
-//
-//        Movie elconclave = new Movie(1, "La maldición", "Desconocido");
-//        try {
-//            movieDAO.create(elconclave);
-//            System.out.println(("Registro creado"));
-//        } catch (PersistenceException sqle) {
-//            System.err.println(sqle.getMessage());
-//        }
+        IMovieDAO movieDAO = MovieDAOFactory.getMovieDAO();
+
+        Movie elconclave = new Movie(1, "Anora", "Desconocido");
+        try {
+            movieDAO.create(elconclave);
+            System.out.println(("Registro creado"));
+        } catch (PersistenceException sqle) {
+            System.err.println(sqle.getMessage());
+        }
 
         /*
         try {

@@ -3,15 +3,15 @@ package com.fernandopaniagua.repasodao.persistence;
 import com.fernandopaniagua.repasodao.util.PropertiesReader;
 
 public class MovieDAOFactory {
-    public static IMovieDAO getMovieDAO(){
+    public static IMovieDAO getMovieDAO() {
+        Object persistenceImplObj = null;
         try {
             String tipoPersistencia = PropertiesReader.getProperty("persistence.type");
-            System.out.println(tipoPersistencia);
+            Class persistenceImplCls = Class.forName(tipoPersistencia);
+            persistenceImplObj = persistenceImplCls.getDeclaredConstructor().newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return new MovieDAOImplFake();
-        //return new MovieDAOImplSQLite();
-        return new MovieDAOImplPostgre();
+        return (IMovieDAO)persistenceImplObj;
     }
 }
