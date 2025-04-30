@@ -1,13 +1,14 @@
-package com.fernandopaniagua.repasodao.persistence;
+package com.fernandopaniagua.repasodao.persistence.sql;
 
 import com.fernandopaniagua.repasodao.exceptions.PersistenceException;
 import com.fernandopaniagua.repasodao.model.Movie;
+import com.fernandopaniagua.repasodao.persistence.IMovieDAO;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDAOImplSQL implements IMovieDAO{
+public class MovieDAOImplSQL implements IMovieDAO {
     protected static String dbURL = "";
     protected static String dbUser = "";
     protected static String dbPassword = "";

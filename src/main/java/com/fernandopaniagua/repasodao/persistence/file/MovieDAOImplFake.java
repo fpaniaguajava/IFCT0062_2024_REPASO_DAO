@@ -1,11 +1,12 @@
-package com.fernandopaniagua.repasodao.persistence;
+package com.fernandopaniagua.repasodao.persistence.file;
 
 import com.fernandopaniagua.repasodao.model.Movie;
+import com.fernandopaniagua.repasodao.persistence.IMovieDAO;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class MovieDAOImplFake implements IMovieDAO{
+public class MovieDAOImplFake implements IMovieDAO {
     private List<Movie> movies = new ArrayList<Movie>();
     @Override
     public void create(Movie movie) {
