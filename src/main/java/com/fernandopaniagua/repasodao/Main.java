@@ -6,35 +6,33 @@ import com.fernandopaniagua.repasodao.persistence.IMovieDAO;
 import com.fernandopaniagua.repasodao.persistence.MovieDAOFactory;
 import com.fernandopaniagua.repasodao.util.PropertiesReader;
 
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-
-
-
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
         IMovieDAO movieDAO = MovieDAOFactory.getMovieDAO();
 
-        Movie elconclave = new Movie("El resplandor", "Desconocido");
-        try {
-            movieDAO.create(elconclave);
-            System.out.println(("Registro creado"));
-        } catch (PersistenceException sqle) {
-            System.err.println(sqle.getMessage());
-        }
-
-        /*
-        try {
-            Movie peliculaLeida = movieDAO.read(1);
-            System.out.println(peliculaLeida);
-        } catch (PersistenceException sqle) {
-            System.err.println(sqle.getMessage());
-        }
-        */
+        //CREATE
+//        Movie elconclave = new Movie("El resplandor", "Desconocido");
+//        try {
+//            movieDAO.create(elconclave);
+//            System.out.println(("Registro creado"));
+//        } catch (PersistenceException sqle) {
+//            System.err.println(sqle.getMessage());
+//        }
 
 
+        //READ
+//        try {
+//            Movie movie = movieDAO.read(5);
+//            System.out.println(movie);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        //READ ALL
 //        try {
 //            List<Movie> movies  = movieDAO.readAll();
 //            //Opción 1
@@ -48,5 +46,21 @@ public class Main {
 //        } catch (PersistenceException sqle) {
 //            System.err.println(sqle.getMessage());
 //        }
+
+        //UPDATE
+//        try {
+//            Movie movie = movieDAO.read(5);
+//            movie.setDirector(movie.getDirector() + "*");
+//            movieDAO.update(movie);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        //DELETE
+        try {
+            movieDAO.delete(5);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
